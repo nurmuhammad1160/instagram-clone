@@ -62,4 +62,7 @@ def send_email(email, code):
         }
     )
 
-    
+def send_phone(phone, code):
+    print(code)
+
+    print(f"Tel: {phone} \n\n {code}")

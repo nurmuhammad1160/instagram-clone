@@ -13,8 +13,8 @@ ORDINARY_USER, MANEGER, ADMIN = ('ordinary_user','maneger','admin')
 VIA_EMAIL, VIA_PHONE = ('via_email','via_phone')
 NEW, CODE_VERIFIED, DONE, PHOTO_DONE = ('new','code_verified','done','photo_done')
 
-PHONE_EXPIRE = 2
-EMAIL_EXPIRE = 5 
+PHONE_EXPIRE = 10
+EMAIL_EXPIRE = 10
 
 class User(AbstractUser, BaseModel):
     USER_ROLE = (
@@ -74,7 +74,6 @@ class User(AbstractUser, BaseModel):
 
     def token(self):
         refresh = RefreshToken.for_user(self)
-        # print(f"access: {str(refresh.access_token)}, refresh_token: {str(refresh)}")
         return {
             "access": str(refresh.access_token),
             "refresh_token": str(refresh)
@@ -90,7 +89,7 @@ class User(AbstractUser, BaseModel):
         self.make_password()
         self.make_username()
         self.hashing_password()
-        # self.token()
+       
 
     
     
